@@ -1,4 +1,4 @@
-# Day 1 – AI Practice Lab
+# Day 0 – AI Practice Lab
 
 ## Today's Focus
 - Recap: How AI Thinks
