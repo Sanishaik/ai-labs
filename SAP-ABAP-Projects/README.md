@@ -37,7 +37,7 @@ An SAP ABAP report designed to retrieve and display purchase order header and it
 ### 1. ALV Output
 Displays the purchase order report results in ALV format.
 
-![ALV Output](alv_output.png)
+![ALV Output](ALV_Output.png)
 
 ### 2. ABAP Debugging
 Shows the ABAP report during a debugging session.
