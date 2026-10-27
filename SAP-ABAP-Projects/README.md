@@ -42,7 +42,7 @@ Displays the purchase order report results in ALV format.
 ### 2. ABAP Debugging
 Shows the ABAP report during a debugging session.
 
-![ABAP Debugging](debbugging_screenshot.png)
+![ABAP Debugging](Debugging_Screenshot.png)
 
 ### 3. Breakpoint Screenshot
 Shows the breakpoint used to inspect program execution.
