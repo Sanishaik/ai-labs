@@ -47,14 +47,17 @@ Shows the ABAP report during a debugging session.
 ### 3. Breakpoint Screenshot
 Shows the breakpoint used to inspect program execution.
 
-![Breakpoint Screenshot](breakpoint_screenshot.png)
+![Breakpoint Screenshot](Breakpoint_Screenshot.png)
 
 ## Repository Structure
 
 ```text
-SAP-ABAP-Projects/
-├── README.md
-├── ZPO_OPEN_LIST.abap
-├── alv_output.png
-├── debbugging_screenshot.png
-└── breakpoint_screenshot.png
+ai-labs/
+├── SAP-ABAP-Projects/
+│   ├── ALV_Output.png
+│   ├── Breakpoint_Screenshot.png
+│   ├── Debugging_Screenshot.png
+│   ├── README.md
+│   └── ZPO_OPEN_LIST.abap
+└── day-01/
+    └── README.md
