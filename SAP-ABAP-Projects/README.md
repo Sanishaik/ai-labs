@@ -32,13 +32,29 @@ An SAP ABAP report designed to retrieve and display purchase order header and it
 - ALV output with optimized columns
 - Debugging and execution testing
 
+## Screenshots
+
+### 1. ALV Output
+Displays the purchase order report results in ALV format.
+
+![ALV Output](alv_output.png)
+
+### 2. ABAP Debugging
+Shows the ABAP report during a debugging session.
+
+![ABAP Debugging](debbugging_screenshot.png)
+
+### 3. Breakpoint Screenshot
+Shows the breakpoint used to inspect program execution.
+
+![Breakpoint Screenshot](breakpoint_screenshot.png)
+
 ## Repository Structure
 
 ```text
 SAP-ABAP-Projects/
 ├── README.md
-└── ZPO_OPEN_LIST.abap
-```
-
-## Author
-Shaik Saniya
+├── ZPO_OPEN_LIST.abap
+├── alv_output.png
+├── debbugging_screenshot.png
+└── breakpoint_screenshot.png
