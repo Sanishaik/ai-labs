@@ -1,4 +1,6 @@
-Task,Prompt Version,Correctness,Completeness,Format,Length,Tone,Total Score,Notes
-Explain EKKO and EKPO,V1 - Lazy,,,,,,,
-Explain EKKO and EKPO,V2 - Six Blocks,,,,,,,
-Explain EKKO and EKPO,V3 - Improved,,,,,,,
+Test_No,Topic,Original_Prompt_Score,Improved_Prompt_Score,Improvement
+1,SAP ABAP Program,4,9,Clear requirements and output
+2,SAP RAP,5,9,Beginner context and practical example
+3,SAP BTP,6,9,Specific learning goals and structure
+4,SAP OData,6,9,Practical SAP example and clear scope
+5,Email Writing,3,9,Clear recipient purpose and tone
