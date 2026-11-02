@@ -1,45 +1,87 @@
-# Day 3 – Task 1: Few-Shot Accuracy
+# Day 3 – Prompt Engineering Lab
 
-## Objective
-Classify 20 expense descriptions into six company expense categories using Zero-Shot and Few-Shot Prompting techniques.
+**Name:** Shaik Saniya  
+**Topic:** Prompt Engineering Techniques  
+**Focus:** Few-shot, Step-by-Step, Role-Based, and JSON Prompting
 
-## Expense Categories
-1. CAPEX-IT
-2. OPEX-Welfare
-3. OPEX-Maintenance
-4. OPEX-Travel
-5. OPEX-Office
-6. OPEX-Training
+## Overview
 
-## Methodology
+On Day 3, I learned four important prompt-engineering techniques and practised using them for expense classification, invoice data extraction, business calculations, and JSON validation.
 
-**1. Zero-Shot Prompting**
-- Provided an expense description directly to Gemini.
-- Asked Gemini to classify the expense into the appropriate category.
-- Recorded the output and checked its correctness.
+## Learning Objectives
 
-**2. Few-Shot Prompting**
-- Provided examples of expenses with their correct categories.
-- Asked Gemini to classify a new expense using those examples.
-- Recorded the output and checked its correctness.
+- Understand Zero-shot and Few-shot prompting.
+- Learn how to use step-by-step instructions.
+- Understand role-based prompting.
+- Generate structured JSON responses.
+- Validate invoice data using Python.
 
-## Accuracy Results
+## Tasks Completed
 
-| Method | Correct Answers | Total Questions | Accuracy |
-|---|---:|---:|---:|
-| Zero-Shot | 18 | 20 | 90% |
-| Few-Shot | 18 | 20 | 90% |
+### Task 1 – Expense Classification
+- Classified 20 expenses into six company categories.
+- Compared Zero-shot and Few-shot prompting.
+- Checked the accuracy of the results.
 
-## Observations
-- Both prompting techniques achieved 90% accuracy.
-- Zero-Shot and Few-Shot each produced 18 correct classifications.
-- Q11 and Q12 were incorrectly classified by both methods.
-- Providing examples in Few-Shot Prompting did not improve accuracy in this experiment.
+### Task 2 – Invoice Data Extraction
+- Generated sample messy invoice data.
+- Created an invoice answer key in JSON format.
+- Practised writing prompts to extract invoice information.
+- Improved prompts to achieve better extraction accuracy.
+
+### Task 3 – Business Money Calculations
+- Solved five business problems involving discounts, GST, and freight.
+- Compared AI responses with and without step-by-step instructions.
+- Verified the answers using Excel.
+
+**Accuracy results:**
+- Without step-by-step instructions: 0/5 correct.
+- With step-by-step instructions: 5/5 correct.
+
+### Task 4 – Python JSON Validator
+Created and executed a Python program to validate invoice JSON files.
+
+The validator checks:
+- Required fields.
+- Invoice date and due date formats.
+- GSTIN length and format.
+- Amount data type.
+- JSON syntax.
+
+**Execution results:**
+- Valid invoice: PASS
+- Missing required field: FAIL
+- Invalid date: FAIL
+- Invalid GSTIN: FAIL
+
+**Validation Summary:** 1 passed, 3 failed.
+
+### Task 5 – Lab Log and Learning Summary
+- Prepared the Day 3 lab log.
+- Documented completed tasks and accuracy results.
+- Identified the most useful prompt-engineering technique.
+
+## Files Included
+
+| File | Description |
+|---|---|
+| `categories.csv` | Expense classification categories |
+| `answer_key.json` | Expected invoice extraction results |
+| `prompts.md` | Prompt examples and improvements |
+| `validate.py` | Python JSON validation program |
+| `valid_invoice.json` | Valid invoice test data |
+| `broken_1_missing_field.json` | Invoice with a missing field |
+| `broken_2_invalid_date.json` | Invoice with an invalid date |
+| `broken_3_invalid_gstin.json` | Invoice with an invalid GSTIN |
+| `task4_execution.png` | Python execution screenshot |
+| `lab-log.md` | Day 3 learning and task summary |
+
+## Key Learning
+
+I learned that clear instructions and examples help AI produce better results. Step-by-step prompting helped me improve calculation accuracy from 0/5 to 5/5. I also gained practical experience in validating structured invoice data using Python.
 
 ## Conclusion
-Completed the expense classification experiment using Gemini. Compared Zero-Shot and Few-Shot Prompting techniques and recorded the results in an Excel workbook.
 
-**Result:** Zero-Shot Accuracy – 90%; Few-Shot Accuracy – 90%.
+Day 3 helped me understand how to write better prompts, improve AI accuracy, work with JSON data, and use Python for basic data validation.
 
-## Proof
-Excel file: `Day_03_Task_1_Few_Shot_Accuracy.xlsx`
+**Status:** Day 3 Prompt Engineering Lab Completed.
