@@ -49,4 +49,4 @@ The audit log records tool names, inputs, timestamps and results, including refu
 ## Conclusion
 
 Successfully implemented guardrails in the AI agent. Human approval, execution limits and audit logging helped prevent unauthorized email sending and maintain a record of tool activity.
-EOF
+EOFcat prompts/prompt-3-functional-to-technical-spec.md
