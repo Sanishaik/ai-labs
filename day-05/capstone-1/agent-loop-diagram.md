@@ -1,4 +1,10 @@
 
+
+# Day 05 – Agent Loop Diagram
+
+This diagram shows how the Claude AI agent uses Python tools, handles human approval, and records tool activity.
+
+```mermaid
 flowchart TD
     A["User Request"] --> B["Claude AI"]
     B --> C{"Tool Required?"}
@@ -18,3 +24,4 @@ flowchart TD
     C -->|No| M["Final Response"]
     B --> N["Maximum 10 Steps"]
     D --> O["audit.jsonl"]
+```
