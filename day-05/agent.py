@@ -1,6 +1,7 @@
 
 import anthropic
 import json
+from datetime import datetime, timezone
 
 from tools import (
     list_open_pos,
@@ -10,6 +11,10 @@ from tools import (
 )
 
 client = anthropic.Anthropic()
+
+AUDIT_FILE = "audit.jsonl"
+MAX_STEPS = 10
+
 
 # Tool descriptions for Claude
 TOOLS = [
@@ -38,7 +43,7 @@ TOOLS = [
     },
     {
         "name": "draft_email",
-        "description": "Create a vendor reminder email draft. Do not send it.",
+        "description": "Create a vendor reminder email draft.",
         "input_schema": {
             "type": "object",
             "properties": {
@@ -56,7 +61,7 @@ TOOLS = [
     },
     {
         "name": "send_email",
-        "description": "Simulate sending an email draft. Human approval is required.",
+        "description": "Request human approval before sending an email.",
         "input_schema": {
             "type": "object",
             "properties": {
@@ -70,25 +75,63 @@ TOOLS = [
     }
 ]
 
-# Connect tool names to Python functions
+
+# Record every tool call in audit.jsonl
+def write_audit(tool_name, inputs, result):
+
+    record = {
+        "timestamp": datetime.now(timezone.utc).isoformat(),
+        "tool": tool_name,
+        "input": inputs,
+        "result": result
+    }
+
+    with open(AUDIT_FILE, "a", encoding="utf-8") as file:
+        file.write(json.dumps(record) + "\n")
+
+
+# Execute tools with human approval for email sending
 def run_tool(name, inputs):
 
     if name == "list_open_pos":
-        return list_open_pos()
+        result = list_open_pos()
 
     elif name == "get_po_status":
-        return get_po_status(inputs["po_number"])
+        result = get_po_status(inputs["po_number"])
 
     elif name == "draft_email":
-        return draft_email(
+        result = draft_email(
             inputs["vendor"],
             inputs["text"]
         )
 
     elif name == "send_email":
-        return send_email(inputs["draft_id"])
 
-    return {"error": "Unknown tool"}
+        print("\nHUMAN APPROVAL REQUIRED")
+        print("Draft ID:", inputs["draft_id"])
+
+        approval = input("Approve this email? (y/n): ").strip().lower()
+
+        if approval == "y":
+            result = send_email(inputs["draft_id"])
+            result["message"] = (
+                "Approval received. Simulation only; "
+                "no real email was sent."
+            )
+
+        else:
+            result = {
+                "status": "Refused",
+                "approval": "n",
+                "message": "Email sending refused by human. No email sent."
+            }
+
+    else:
+        result = {"error": "Unknown tool"}
+
+    write_audit(name, inputs, result)
+
+    return result
 
 
 # Goal given to Claude
@@ -102,24 +145,27 @@ messages = [
         Draft a polite reminder email for each vendor
         with late purchase orders.
 
-        Do not send any emails.
-        Only create email drafts.
+        After drafting, request the send_email tool for
+        each draft. The program will ask for human approval.
+
+        Never bypass human approval.
         Explain the results in simple English.
         """
     }
 ]
 
-print("\nDAY 05 - TASK 2: AGENT LOOP")
+
+print("\nDAY 05 - TASK 3: GUARDRAILS IN CODE")
 print("=" * 50)
 
-# Agent loop: maximum 10 steps
-for step in range(10):
+# Agent loop with a maximum of 10 steps
+for step in range(MAX_STEPS):
 
     print(f"\nAGENT STEP {step + 1}")
 
     response = client.messages.create(
         model="claude-haiku-5-5",
-        max_tokens=1500,
+        max_tokens=2000,
         tools=TOOLS,
         messages=messages
     )
@@ -131,10 +177,12 @@ for step in range(10):
 
     # Stop when Claude has finished
     if response.stop_reason != "tool_use":
+
         for block in response.content:
             if block.type == "text":
                 print("\nCLAUDE FINAL RESPONSE:")
                 print(block.text)
+
         break
 
     # Execute requested tools
@@ -147,14 +195,7 @@ for step in range(10):
             print("\nTOOL:", block.name)
             print("INPUT:", json.dumps(block.input, indent=2))
 
-            # Safety: do not send emails automatically
-            if block.name == "send_email":
-                output = {
-                    "status": "Blocked",
-                    "message": "Human approval required. Email not sent."
-                }
-            else:
-                output = run_tool(block.name, block.input)
+            output = run_tool(block.name, block.input)
 
             print("RESULT:", json.dumps(output, indent=2))
 
@@ -173,3 +214,4 @@ else:
     print("\nMaximum 10 agent steps reached.")
 
 print("\nAGENT LOOP COMPLETED")
+print("Audit records saved in:", AUDIT_FILE)
