@@ -1,0 +1,92 @@
+### Sample requests for po-service (run with cds watch on port 4004)
+### Sample data only.
+
+### 1. All POs
+GET http://localhost:4004/odata/v4/po/PurchaseOrders
+
+### 2. Late POs (filter on two fields; isLate cannot be filtered because it is virtual)
+GET http://localhost:4004/odata/v4/po/PurchaseOrders?$filter=dueDate%20lt%202026-11-03%20and%20deliveredQty%20lt%20orderedQty&$expand=vendor
+
+### 3. POs sorted by due date
+GET http://localhost:4004/odata/v4/po/PurchaseOrders?$orderby=dueDate
+
+### 4. POs with their vendor
+GET http://localhost:4004/odata/v4/po/PurchaseOrders?$expand=vendor
+
+### 5. Create a PO with amount 0 (expect 400)
+POST http://localhost:4004/odata/v4/po/PurchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "4500098",
+  "vendor_ID": "V001",
+  "dueDate": "2026-12-15",
+  "orderedQty": 10,
+  "deliveredQty": 0,
+  "amount": 0
+}
+
+### 6. Create a valid PO (expect 201). Run once; a second run gives 409 because the key exists.
+POST http://localhost:4004/odata/v4/po/PurchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "4500099",
+  "vendor_ID": "V002",
+  "dueDate": "2026-12-15",
+  "orderedQty": 10,
+  "deliveredQty": 0,
+  "amount": 15000.00
+}
+
+### 7. Valid quantities (ordered 10, delivered 5; expect 201). Run once; a second run gives 409 because the key exists.
+POST http://localhost:4004/odata/v4/po/PurchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "4500101",
+  "vendor_ID": "V001",
+  "dueDate": "2026-12-15",
+  "orderedQty": 10,
+  "deliveredQty": 5,
+  "amount": 1000.00
+}
+
+### 8. Negative orderedQty (expect 400: "Ordered quantity must not be negative.")
+POST http://localhost:4004/odata/v4/po/PurchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "4500102",
+  "vendor_ID": "V001",
+  "dueDate": "2026-12-15",
+  "orderedQty": -1,
+  "deliveredQty": 0,
+  "amount": 1000.00
+}
+
+### 9. Negative deliveredQty (expect 400: "Delivered quantity must not be negative.")
+POST http://localhost:4004/odata/v4/po/PurchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "4500103",
+  "vendor_ID": "V001",
+  "dueDate": "2026-12-15",
+  "orderedQty": 10,
+  "deliveredQty": -1,
+  "amount": 1000.00
+}
+
+### 10. deliveredQty greater than orderedQty (expect 400: "Delivered quantity must not exceed ordered quantity.")
+POST http://localhost:4004/odata/v4/po/PurchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "4500104",
+  "vendor_ID": "V001",
+  "dueDate": "2026-12-15",
+  "orderedQty": 10,
+  "deliveredQty": 11,
+  "amount": 1000.00
+}
