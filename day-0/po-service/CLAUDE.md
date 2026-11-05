@@ -7,7 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - Install: `npm install`
 - Dev server (watch mode, SQLite, auto-reloads on change): `npx cds watch` → `http://localhost:4004`
 - Run without watch: `npm start` (runs `cds-serve`)
-- Tests: there is no test runner or lint script. `test/po.http` holds manual REST requests; run them with `cds watch` already running (e.g. VS Code REST Client). To exercise one case, send only that request block.
+- Tests: run `npm test`. This uses the Node.js built-in test runner (`node --test`). Automated tests live in `test/*.test.js` and start the service in-process with an in-memory DB, so `cds watch` is not needed. There is no lint script. `test/po.http` holds manual REST requests; run them with `cds watch` already running (e.g. VS Code REST Client). To exercise one case, send only that request block.
 
 ## Architecture
 
@@ -17,6 +17,7 @@ This is a SAP CAP (CDS) service, `package.json` `"type": "module"`, with no UI y
 - **Service surface** `srv/po-service.cds`: `POService` at `/odata/v4/po`. It exposes only projections of the two entities. Anything not projected here is not reachable over OData, even if it exists in the schema.
 - **Business rules** `srv/po-service.js`, registered as handlers on the service:
   - `before CREATE` on `PurchaseOrders` rejects `amount <= 0` with 400. It only checks when `amount` is present in the payload.
+  - `before CREATE` on `PurchaseOrders` also rejects negative `orderedQty`, negative `deliveredQty`, and `deliveredQty > orderedQty`, each with 400. Each check only runs when its field is present.
   - `after READ` computes `isLate` per row in memory: `dueDate` before today (UTC `YYYY-MM-DD` string comparison) and `deliveredQty < orderedQty`.
 - **Seed data** `db/data/resoftwa.po-Vendors.csv` and `resoftwa.po-PurchaseOrders.csv`. CAP loads these by its `<namespace>-<entity>.csv` naming convention. The root-level `po_list.csv` and `vendors.csv` are not loaded by the app. `po_list.csv` has an `isLate` column that the model does not define.
 

@@ -38,3 +38,55 @@ Content-Type: application/json
   "deliveredQty": 0,
   "amount": 15000.00
 }
+
+### 7. Valid quantities (ordered 10, delivered 5; expect 201). Run once; a second run gives 409 because the key exists.
+POST http://localhost:4004/odata/v4/po/PurchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "4500101",
+  "vendor_ID": "V001",
+  "dueDate": "2026-12-15",
+  "orderedQty": 10,
+  "deliveredQty": 5,
+  "amount": 1000.00
+}
+
+### 8. Negative orderedQty (expect 400: "Ordered quantity must not be negative.")
+POST http://localhost:4004/odata/v4/po/PurchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "4500102",
+  "vendor_ID": "V001",
+  "dueDate": "2026-12-15",
+  "orderedQty": -1,
+  "deliveredQty": 0,
+  "amount": 1000.00
+}
+
+### 9. Negative deliveredQty (expect 400: "Delivered quantity must not be negative.")
+POST http://localhost:4004/odata/v4/po/PurchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "4500103",
+  "vendor_ID": "V001",
+  "dueDate": "2026-12-15",
+  "orderedQty": 10,
+  "deliveredQty": -1,
+  "amount": 1000.00
+}
+
+### 10. deliveredQty greater than orderedQty (expect 400: "Delivered quantity must not exceed ordered quantity.")
+POST http://localhost:4004/odata/v4/po/PurchaseOrders
+Content-Type: application/json
+
+{
+  "poNumber": "4500104",
+  "vendor_ID": "V001",
+  "dueDate": "2026-12-15",
+  "orderedQty": 10,
+  "deliveredQty": 11,
+  "amount": 1000.00
+}
