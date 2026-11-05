@@ -3,6 +3,7 @@ import cds from '@sap/cds';
 
 export default cds.service.impl(async function () {
   const { PurchaseOrders } = this.entities;
+  const { SELECT } = cds.ql;
 
   // Rule 1: before creating a PO, reject amount <= 0
   this.before('CREATE', PurchaseOrders, (req) => {
@@ -13,19 +14,37 @@ export default cds.service.impl(async function () {
     }
   });
 
-  // Rule 2: before creating a PO, check quantities
-  this.before('CREATE', PurchaseOrders, (req) => {
+  // Rule 2: before creating or updating a PO, check quantities.
+  // On PATCH the body may hold only some fields, so a missing one is read
+  // from the stored PO before the comparison.
+  this.before(['CREATE', 'UPDATE'], PurchaseOrders, async (req) => {
     const { orderedQty, deliveredQty } = req.data;
     const hasOrdered = orderedQty !== undefined && orderedQty !== null;
     const hasDelivered = deliveredQty !== undefined && deliveredQty !== null;
 
+    // Negative checks: only on values sent in this request
     if (hasOrdered && orderedQty < 0) {
       return req.reject(400, 'Ordered quantity must not be negative.');
     }
     if (hasDelivered && deliveredQty < 0) {
       return req.reject(400, 'Delivered quantity must not be negative.');
     }
-    if (hasOrdered && hasDelivered && deliveredQty > orderedQty) {
+
+    // Comparison needs both values. On UPDATE, fill a missing one from the stored PO.
+    let ordered = orderedQty;
+    let delivered = deliveredQty;
+    if (req.event === 'UPDATE' && (!hasOrdered || !hasDelivered)) {
+      const poNumber = req.data.poNumber ?? req.params[0]?.poNumber;
+      const current = await SELECT.one
+        .from(PurchaseOrders)
+        .columns('orderedQty', 'deliveredQty')
+        .where({ poNumber });
+      if (current) {
+        if (!hasOrdered) ordered = current.orderedQty;
+        if (!hasDelivered) delivered = current.deliveredQty;
+      }
+    }
+    if (ordered != null && delivered != null && delivered > ordered) {
       return req.reject(400, 'Delivered quantity must not exceed ordered quantity.');
     }
   });
