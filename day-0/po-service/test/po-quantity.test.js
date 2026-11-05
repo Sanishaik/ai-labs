@@ -1,4 +1,4 @@
-// Automated tests for PO quantity validation (CREATE only) and regression checks
+// Automated tests for PO quantity validation (CREATE and PATCH) and regression checks
 // for the existing amount rule and the isLate calculation.
 // Run with: npm test   (from the po-service folder; no cds watch needed)
 import { describe, it, before, after } from 'node:test';
@@ -29,6 +29,17 @@ async function getPO(poNumber) {
   return { status: res.status, body };
 }
 
+// PATCH an existing PO by key and return { status, body }
+async function patchPO(poNumber, payload) {
+  const res = await fetch(`${base}${BASE}('${poNumber}')`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+    body: JSON.stringify(payload),
+  });
+  const body = await res.json().catch(() => ({}));
+  return { status: res.status, body };
+}
+
 // Base payload; each test overrides only the fields it cares about
 function po(poNumber, overrides = {}) {
   return {
@@ -51,7 +62,6 @@ before(async () => {
 
 after(async () => {
   await new Promise((resolve) => server.close(resolve));
-  await cds.shutdown?.();
 });
 
 describe('PO quantity validation (CREATE)', () => {
@@ -108,5 +118,14 @@ describe('existing behaviour is preserved', () => {
     const r = await getPO('4500013');
     assert.equal(r.status, 200);
     assert.equal(r.body.isLate, false);
+  });
+});
+
+describe('PO quantity validation (PATCH)', () => {
+  it('rejects delivered quantity greater than ordered on update with 400', async () => {
+    // Seed 4500012: ordered 100, delivered 60. Try to set delivered to 150.
+    const r = await patchPO('4500012', { deliveredQty: 150 });
+    assert.equal(r.status, 400);
+    assert.equal(r.body.error.message, 'Delivered quantity must not exceed ordered quantity.');
   });
 });
