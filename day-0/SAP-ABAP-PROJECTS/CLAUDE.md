@@ -27,4 +27,3 @@ The file is organized into numbered sections. The order matters in ABAP: the cla
 - **`MAKT` is documented but not read.** The README lists `MAKT` (material descriptions) as a table used, but the query uses `EKPO-TXZ01` for the item text and does not join `MAKT`.
 - **Old-style syntax in places**: `CREATE OBJECT` and `CALL METHOD` are used alongside the newer `@` host-variable syntax. Keep the style consistent with the code around the change.
 - The `README.md` repository tree is out of date. It lists only `day-01/`, while the parent `ai-labs/` directory now has several `day-*` folders.
-- `Day2_Task3_Reverse_Engineering.docx..docx` has a doubled extension and is a course document, not code.
