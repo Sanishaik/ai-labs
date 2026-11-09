@@ -1,37 +1,57 @@
 # Invoice-to-Insight
 
-## Project Overview
-Invoice-to-Insight is an agentic AI project designed to extract invoice information, validate invoices against purchase orders, and prepare a review-ready summary.
+## Day 6 – Task 4: Capstone 2 Setup
 
-## Project Objectives
-- Extract structured data from trainer-provided sample invoices.
-- Convert extracted invoice information into JSON.
-- Validate invoice details against the Purchase Order (PO) list.
-- Prepare posting summaries for clean invoices.
-- Send exceptions to a human reviewer.
-- Maintain audit logs and require human approval before posting.
+### Project Overview
 
-## Project Structure
-- invoices/ - Trainer-provided sample invoices.
-- data/ - Purchase Order list and supporting data.
-- CLAUDE.md - Project-specific instructions for Claude Code.
-- spec.md - Project requirements and design.
+Invoice-to-Insight is a practice project designed to explore invoice processing, purchase order (PO) matching, validation, and exception handling using AI-assisted development.
 
-## Safety Requirements
-- Use trainer-provided sample invoices only.
-- Never use real client data.
-- Require human approval before any posting action.
-- Follow least-privilege access principles.
+The project will gradually include invoice data extraction, PO verification, validation checks, approval controls, and audit logging.
 
-## Development Plan
-- Day 6: Project setup and initial specification.
-- Day 7: Invoice extraction and PO validation.
-- Day 8: Validation results, summaries, and exception handling.
-- Day 9: Security tests, approval gate, audit log, evaluation, and documentation.
-- Day 10: Final demonstration.
+### Project Structure
 
-## Dataset Status
+```text
+capstone-2/
+├── data/
+│   └── po_list.csv
+├── invoices/
+│   ├── invoice1.json
+│   └── invoice2.json
+├── README.md
+└── spec.md
+```
 
-- `data/po_list.csv` is currently a provisional copy of the Day 0 PO dataset. Confirm it against the trainer's Capstone 2 data before using it.
-- `invoices/invoice1.json` and `invoices/invoice2.json` contain synthetic practice examples for initial testing; they are not trainer-provided invoices.
-- Replace or verify these examples against the trainer's official sample invoices when available.
+### Current Files
+
+| File | Description |
+|---|---|
+| `data/po_list.csv` | Purchase order reference data |
+| `invoices/invoice1.json` | Sample invoice JSON |
+| `invoices/invoice2.json` | Sample invoice JSON |
+| `spec.md` | Initial project specification |
+| `README.md` | Project documentation |
+
+### Data Information
+
+- The current PO list is a provisional copy of the Day 0 dataset and must be verified against the official Capstone 2 PO data.
+- The two invoice JSON files are synthetic practice examples, not trainer-provided invoices.
+- The datasets will be updated when the official trainer samples are available.
+
+### Development Plan
+
+1. Finalize the project specification.
+2. Extract invoice information into structured JSON.
+3. Validate invoice details against purchase orders.
+4. Identify mismatches and exceptions.
+5. Generate clean-invoice summaries and exception reports.
+6. Add security checks, human approval, and audit logging.
+7. Test the workflow and document the results.
+
+### Instructions
+
+Shared development instructions are maintained in the global `CLAUDE.md` file outside this project folder.
+
+
+**Proof:** Project setup committed and pushed to the `main` branch of the `ai-labs` repository.
+
+**Status:** Day 6 – Task 4 setup completed.
