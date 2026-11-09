@@ -29,3 +29,9 @@ Invoice-to-Insight is an agentic AI project designed to extract invoice informat
 - Day 8: Validation results, summaries, and exception handling.
 - Day 9: Security tests, approval gate, audit log, evaluation, and documentation.
 - Day 10: Final demonstration.
+
+## Dataset Status
+
+- `data/po_list.csv` is currently a provisional copy of the Day 0 PO dataset. Confirm it against the trainer's Capstone 2 data before using it.
+- `invoices/invoice1.json` and `invoices/invoice2.json` contain synthetic practice examples for initial testing; they are not trainer-provided invoices.
+- Replace or verify these examples against the trainer's official sample invoices when available.

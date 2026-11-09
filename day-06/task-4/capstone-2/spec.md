@@ -13,8 +13,9 @@ Invoice-to-Insight is an AI-assisted workflow that extracts information from sup
 - Maintain an audit log of important actions.
 
 ## 3. Input Data
-- Trainer-provided sample invoices stored in invoices/.
-- Trainer-provided purchase order list stored in data/.
+- The current invoice JSON files are synthetic practice examples, not official trainer samples.
+- The PO list in data/ is a provisional Day 0 copy and must be confirmed against the trainer's Capstone 2 data.
+- Replace or verify both datasets against official trainer samples when available.
 
 Only training sample data will be used. Real client data is not permitted.
 

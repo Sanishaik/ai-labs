@@ -4,9 +4,11 @@
 Build an AI-assisted invoice extraction and purchase order validation workflow.
 
 ## Important Data Rules
-- Use only trainer-provided sample invoices and purchase order data.
+- Current invoice JSON files are synthetic practice examples, not trainer-provided samples.
+- The current PO CSV is a provisional copy of the Day 0 dataset; confirm it against the trainer's Capstone 2 data.
+- Use trainer-provided samples when they become available.
 - Never use real client or confidential business data.
-- Do not invent, modify, or silently correct source invoice or PO data.
+- Do not silently modify or correct source data.
 - Keep original source files unchanged.
 
 ## Development Rules
