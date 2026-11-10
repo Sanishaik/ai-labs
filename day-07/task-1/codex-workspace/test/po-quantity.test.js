@@ -1,4 +1,4 @@
-// Automated tests for PO quantity validation (CREATE and PATCH) and regression checks
+// Automated tests for PO quantity validation on CREATE and regression checks
 // for the existing amount rule and the isLate calculation.
 // Run with: npm test   (from the po-service folder; no cds watch needed)
 import { describe, it, before, after } from 'node:test';
@@ -121,11 +121,10 @@ describe('existing behaviour is preserved', () => {
   });
 });
 
-describe('PO quantity validation (PATCH)', () => {
-  it('rejects delivered quantity greater than ordered on update with 400', async () => {
-    // Seed 4500012: ordered 100, delivered 60. Try to set delivered to 150.
+describe('quantity validation applies to CREATE only', () => {
+  it('does not reject quantity changes on update', async () => {
+    // Seed 4500012: ordered 100, delivered 60. CREATE rules do not apply to PATCH.
     const r = await patchPO('4500012', { deliveredQty: 150 });
-    assert.equal(r.status, 400);
-    assert.equal(r.body.error.message, 'Delivered quantity must not exceed ordered quantity.');
+    assert.equal(r.status, 200);
   });
 });

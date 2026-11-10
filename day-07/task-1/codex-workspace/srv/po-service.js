@@ -3,7 +3,6 @@ import cds from '@sap/cds';
 
 export default cds.service.impl(async function () {
   const { PurchaseOrders } = this.entities;
-  const { SELECT } = cds.ql;
 
   // Rule 1: before creating a PO, reject amount <= 0
   this.before('CREATE', PurchaseOrders, (req) => {
@@ -27,37 +26,6 @@ export default cds.service.impl(async function () {
       return req.reject(400, 'Delivered quantity must not be negative.');
     }
     if (hasOrdered && hasDelivered && deliveredQty > orderedQty) {
-      return req.reject(400, 'Delivered quantity must not exceed ordered quantity.');
-    }
-  });
-
-  // Preserve PATCH validation; missing fields are read from the stored PO.
-  this.before('UPDATE', PurchaseOrders, async (req) => {
-    const { orderedQty, deliveredQty } = req.data;
-    const hasOrdered = orderedQty !== undefined && orderedQty !== null;
-    const hasDelivered = deliveredQty !== undefined && deliveredQty !== null;
-
-    if (hasOrdered && orderedQty < 0) {
-      return req.reject(400, 'Ordered quantity must not be negative.');
-    }
-    if (hasDelivered && deliveredQty < 0) {
-      return req.reject(400, 'Delivered quantity must not be negative.');
-    }
-
-    let ordered = orderedQty;
-    let delivered = deliveredQty;
-    if (!hasOrdered || !hasDelivered) {
-      const poNumber = req.data.poNumber ?? req.params[0]?.poNumber;
-      const current = await SELECT.one
-        .from(PurchaseOrders)
-        .columns('orderedQty', 'deliveredQty')
-        .where({ poNumber });
-      if (current) {
-        if (!hasOrdered) ordered = current.orderedQty;
-        if (!hasDelivered) delivered = current.deliveredQty;
-      }
-    }
-    if (ordered != null && delivered != null && delivered > ordered) {
       return req.reject(400, 'Delivered quantity must not exceed ordered quantity.');
     }
   });
