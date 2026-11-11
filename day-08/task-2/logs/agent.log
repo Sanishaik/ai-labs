@@ -1,0 +1,57 @@
+2026-11-11 07:02:53,715 INFO Supplier check: {'supplier': 'Sharma Steels', 'rating': 'good'}
+2026-11-11 07:02:53,715 INFO PO created for PR1. Reason: supplier is good and amount is within approval limit.
+2026-11-11 07:02:53,715 INFO Decision for PR1: PO_CREATED. Reason: Supplier is good and amount is within the ₹25 lakh limit.
+2026-11-11 07:02:53,716 INFO Supplier check: {'supplier': 'Vizag Paints', 'rating': 'good'}
+2026-11-11 07:02:53,716 INFO PO created for PR2. Reason: supplier is good and amount is within approval limit.
+2026-11-11 07:02:53,716 INFO Decision for PR2: PO_CREATED. Reason: Supplier is good and amount is within the ₹25 lakh limit.
+2026-11-11 07:02:53,716 INFO Supplier check: {'supplier': 'Guntur Cables', 'rating': 'good'}
+2026-11-11 07:02:53,721 INFO PO created for PR3. Reason: supplier is good and amount is within approval limit.
+2026-11-11 07:02:53,721 INFO Decision for PR3: PO_CREATED. Reason: Supplier is good and amount is within the ₹25 lakh limit.
+2026-11-11 07:02:53,722 INFO Supplier check: {'supplier': 'New Vendor Co', 'rating': 'new'}
+2026-11-11 07:02:53,722 INFO Manager escalation for PR4. Reason: Supplier rating is 'new', not good.
+2026-11-11 07:02:53,722 INFO Decision for PR4: MANAGER_REVIEW. Reason: Supplier rating is 'new', not good.
+2026-11-11 07:02:53,722 INFO Supplier check: {'supplier': 'Sharma Steels', 'rating': 'good'}
+2026-11-11 07:02:53,723 INFO Manager escalation for PR5. Reason: Requisition amount exceeds the ₹25 lakh approval limit.
+2026-11-11 07:02:53,723 INFO Decision for PR5: MANAGER_REVIEW. Reason: Requisition amount exceeds the ₹25 lakh approval limit.
+2026-11-11 07:06:16,342 ERROR Received exception from stream: 1 validation error for JSONRPCMessage
+  Invalid JSON: EOF while parsing a value at line 2 column 0 [type=json_invalid, input_value='\n', input_type=str]
+    For further information visit https://errors.pydantic.dev/2.14/v/json_invalid
+2026-11-11 07:08:54,504 INFO Processing request of type ListToolsRequest
+2026-11-11 07:08:54,505 INFO Processing request of type CallToolRequest
+2026-11-11 07:08:54,506 INFO Supplier check: {'supplier': 'Sharma Steels', 'rating': 'good'}
+2026-11-11 07:10:12,093 INFO Supplier check: {'supplier': 'Sharma Steels', 'rating': 'good'}
+2026-11-11 07:10:12,093 INFO PO created for PR1. Reason: supplier is good and amount is within approval limit.
+2026-11-11 07:10:12,093 INFO Decision for PR1: PO_CREATED. Reason: Supplier is good and amount is within the ₹25 lakh limit.
+2026-11-11 07:10:12,094 INFO Supplier check: {'supplier': 'Vizag Paints', 'rating': 'good'}
+2026-11-11 07:10:12,098 INFO PO created for PR2. Reason: supplier is good and amount is within approval limit.
+2026-11-11 07:10:12,098 INFO Decision for PR2: PO_CREATED. Reason: Supplier is good and amount is within the ₹25 lakh limit.
+2026-11-11 07:10:12,098 INFO Supplier check: {'supplier': 'Guntur Cables', 'rating': 'good'}
+2026-11-11 07:10:12,103 INFO PO created for PR3. Reason: supplier is good and amount is within approval limit.
+2026-11-11 07:10:12,103 INFO Decision for PR3: PO_CREATED. Reason: Supplier is good and amount is within the ₹25 lakh limit.
+2026-11-11 07:10:12,103 INFO Supplier check: {'supplier': 'New Vendor Co', 'rating': 'new'}
+2026-11-11 07:10:12,104 INFO Manager escalation for PR4. Reason: Supplier rating is 'new', not good.
+2026-11-11 07:10:12,104 INFO Decision for PR4: MANAGER_REVIEW. Reason: Supplier rating is 'new', not good.
+2026-11-11 07:10:12,104 INFO Supplier check: {'supplier': 'Sharma Steels', 'rating': 'good'}
+2026-11-11 07:10:12,111 INFO Manager escalation for PR5. Reason: Requisition amount exceeds the ₹25 lakh approval limit.
+2026-11-11 07:10:12,111 INFO Decision for PR5: MANAGER_REVIEW. Reason: Requisition amount exceeds the ₹25 lakh approval limit.
+2026-11-11 07:10:36,593 INFO Processing request of type ListToolsRequest
+2026-11-11 07:10:36,595 INFO Processing request of type CallToolRequest
+2026-11-11 07:10:36,595 INFO Supplier check: {'supplier': 'Sharma Steels', 'rating': 'good'}
+2026-11-11 07:23:45,613 INFO Supplier check: {'supplier': 'Sharma Steels', 'rating': 'good'}
+2026-11-11 07:23:45,614 INFO PO created for PR1. Reason: supplier is good and amount is within approval limit.
+2026-11-11 07:23:45,614 INFO Decision for PR1: PO_CREATED. Reason: Supplier is good and amount is within the ₹25 lakh limit.
+2026-11-11 07:23:45,615 INFO Supplier check: {'supplier': 'Vizag Paints', 'rating': 'good'}
+2026-11-11 07:23:45,619 INFO PO created for PR2. Reason: supplier is good and amount is within approval limit.
+2026-11-11 07:23:45,619 INFO Decision for PR2: PO_CREATED. Reason: Supplier is good and amount is within the ₹25 lakh limit.
+2026-11-11 07:23:45,620 INFO Supplier check: {'supplier': 'Guntur Cables', 'rating': 'good'}
+2026-11-11 07:23:45,625 INFO PO created for PR3. Reason: supplier is good and amount is within approval limit.
+2026-11-11 07:23:45,625 INFO Decision for PR3: PO_CREATED. Reason: Supplier is good and amount is within the ₹25 lakh limit.
+2026-11-11 07:23:45,625 INFO Supplier check: {'supplier': 'New Vendor Co', 'rating': 'new'}
+2026-11-11 07:23:45,625 INFO Manager escalation for PR4. Reason: Supplier rating is 'new', not good.
+2026-11-11 07:23:45,625 INFO Decision for PR4: MANAGER_REVIEW. Reason: Supplier rating is 'new', not good.
+2026-11-11 07:23:45,626 INFO Supplier check: {'supplier': 'Sharma Steels', 'rating': 'good'}
+2026-11-11 07:23:45,631 INFO Manager escalation for PR5. Reason: Requisition amount exceeds the ₹25 lakh approval limit.
+2026-11-11 07:23:45,631 INFO Decision for PR5: MANAGER_REVIEW. Reason: Requisition amount exceeds the ₹25 lakh approval limit.
+2026-11-11 07:27:29,060 INFO Processing request of type ListToolsRequest
+2026-11-11 07:27:29,061 INFO Processing request of type CallToolRequest
+2026-11-11 07:27:29,062 INFO Supplier check: {'supplier': 'Sharma Steels', 'rating': 'good'}

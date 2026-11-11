@@ -1,0 +1,56 @@
+[
+    {
+        "requisition_id": "PR1",
+        "supplier": "Sharma Steels",
+        "amount": 450000,
+        "status": "PO_CREATED"
+    },
+    {
+        "requisition_id": "PR2",
+        "supplier": "Vizag Paints",
+        "amount": 120000,
+        "status": "PO_CREATED"
+    },
+    {
+        "requisition_id": "PR3",
+        "supplier": "Guntur Cables",
+        "amount": 980000,
+        "status": "PO_CREATED"
+    },
+    {
+        "requisition_id": "PR1",
+        "supplier": "Sharma Steels",
+        "amount": 450000,
+        "status": "PO_CREATED"
+    },
+    {
+        "requisition_id": "PR2",
+        "supplier": "Vizag Paints",
+        "amount": 120000,
+        "status": "PO_CREATED"
+    },
+    {
+        "requisition_id": "PR3",
+        "supplier": "Guntur Cables",
+        "amount": 980000,
+        "status": "PO_CREATED"
+    },
+    {
+        "requisition_id": "PR1",
+        "supplier": "Sharma Steels",
+        "amount": 450000,
+        "status": "PO_CREATED"
+    },
+    {
+        "requisition_id": "PR2",
+        "supplier": "Vizag Paints",
+        "amount": 120000,
+        "status": "PO_CREATED"
+    },
+    {
+        "requisition_id": "PR3",
+        "supplier": "Guntur Cables",
+        "amount": 980000,
+        "status": "PO_CREATED"
+    }
+]
