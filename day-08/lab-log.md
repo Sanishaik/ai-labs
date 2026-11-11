@@ -1,39 +1,43 @@
-# Day 8 – Lab Log
+# Day 8 Lab Log
 
-## Introduction
+**Date:** 2026-11-11
 
-Today, I worked on agent development, MCP server implementation, ABAP code review, and an invoice validation capstone project. I learned how AI agents can use instructions, tools, and external data to perform business tasks more efficiently.
+## Answer: Difference Between Skill and Agent
 
-## Task 1: Agent Design
+A **skill** is an individual, reusable action that performs a specific task, such as retrieving a purchase order, checking whether a PO is late, or validating an invoice. In my Day 8 project, the MCP server exposed these individual functions as tools.
 
-I worked on designing an AI agent for a business scenario. I understood how to define an agent's purpose, responsibilities, workflow, and tools. I also learned how to prepare a design document describing the agent's steps and expected behavior.
+An **agent** is the workflow layer that uses these skills and tools to complete a larger task. In my work, I designed an agent workflow and implemented an invoice-validation process that used MCP tools to check five invoices against purchase order data, identify mismatches, separate clean invoices from exceptions, and generate summary reports and audit logs.
 
-## Task 2: MCP Server Development
+**In simple words:** A skill performs one specific action, whereas an agent decides how to use multiple skills and tools to complete the overall business workflow.
 
-I developed a Python-based MCP server to expose business-related functionality through tools. I worked on creating and testing MCP tools for purchase order-related operations. I also explored how an AI agent can communicate with external tools using the Model Context Protocol (MCP). During testing, I checked the server responses and reviewed the execution logs.
+## Evidence from My Day 8 Work
 
-## Task 3: SAP ABAP Code Review
+| Category | Example from my work | File | What it does |
+|---|---|---|---|
+| Skill (MCP Tool) | `get_po` | `po-mcp/server.py` | Retrieves purchase order details. |
+| Skill (MCP Tool) | `list_late_pos` | `po-mcp/server.py` | Retrieves purchase orders that are late. |
+| Skill (MCP Tool) | `check_invoice_po` | `po-mcp/server.py` | Checks invoice details against purchase order information. |
+| Skill (MCP Tool) | `validate_invoice` | `po-mcp/server.py` | Validates an invoice and identifies mismatches. |
+| Agent / Workflow | Invoice validation workflow | `capstone-2` | Uses the validation tools to process multiple invoices and organize the results. |
+| Agent / Workflow | Exception handling and audit logging | `logs/audit.log` | Records invoice validation results. |
+| Agent / Workflow | Result generation | `results/` | Produces clean invoice summaries and exception reports. |
 
-I worked on an SAP ABAP code review task. I prepared an ABAP program, reviewed the code, documented review observations, and created ABAP Unit test cases. This task helped me understand the importance of code quality, readability, testing, and identifying potential issues before using code in a business environment.
+## Results from My Capstone 2 Project
 
-## Task 4: Capstone 2 – Invoice Validation Using MCP
+| Check | Actual Result | Evidence File |
+|---|---|---|
+| Total invoices processed | 5 | `invoices/` |
+| Clean invoices | 3 (INV001, INV002, INV003) | `results/clean_invoice_summary.json` |
+| Exception invoices | 2 (INV004, INV005) | `results/exceptions.json` |
+| INV004 exception | Vendor mismatch | `results/exceptions.json` |
+| INV005 exception | Amount mismatch | `results/exceptions.json` |
+| Audit logging | Validation results recorded | `logs/audit.log` |
+| Actual SAP financial posting | Not performed | Capstone 2 validation scope |
 
-I developed an invoice validation workflow using a Python MCP server. The project included purchase order data, invoice JSON files, validation tools, and audit logging.
+## What I Learned
 
-I implemented tools to retrieve purchase orders, list late purchase orders, check invoice and purchase order details, and validate invoices. I tested five sample invoices against purchase order records. Three invoices were identified as clean, while two invoices were marked as exceptions due to vendor and amount mismatches.
+I learned that individual MCP tools act as reusable skills for performing specific operations, while an agent or workflow combines these tools to complete a business process. I also gained practical experience in Python, MCP server development, purchase order retrieval, invoice validation, exception handling, JSON and CSV processing, and audit logging.
 
-The project generated a clean invoice summary, an exceptions report, and an audit log. This helped me understand how MCP tools can support automated invoice verification and exception handling in a business process.
+## Proof
 
-## Task 5: Proof & Log
-
-I documented the work completed during Day 8 and added a lab log containing the key learning outcomes. I successfully pushed the Day 8 folder to my GitHub repository, `Sanishaik/ai-labs`, on the `main` branch.
-
-**Skill vs Agent:** A skill provides reusable instructions for a specific task, whereas an agent uses skills and tools to make decisions and complete a workflow.
-
-## What I Learned Today
-
-Today, I gained practical experience in AI agent design, MCP server development, Python-based tool integration, SAP ABAP code review, ABAP Unit testing, invoice validation, JSON and CSV processing, exception handling, and audit logging. I also improved my understanding of how AI agents and MCP tools can be applied to SAP-related business scenarios.
-
-## Conclusion
-
-Day 8 helped me connect AI concepts with practical SAP business use cases. I successfully completed the assigned tasks, tested the invoice validation workflow, documented my learning, and pushed my work to GitHub.
+Successfully completed the Day 8 tasks and pushed the Day 8 folder, including the lab log and Capstone 2 project, to my GitHub repository `Sanishaik/ai-labs` on the `main` branch.
