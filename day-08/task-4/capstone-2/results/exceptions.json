@@ -1,0 +1,24 @@
+[
+  {
+    "invoice_number": "INV004",
+    "po_number": "4500015",
+    "vendor_id": "V001",
+    "invoice_amount": "240000",
+    "po_amount": "240000.0",
+    "status": "EXCEPTION",
+    "reasons": [
+      "Vendor mismatch: invoice has V001, but PO has V002."
+    ]
+  },
+  {
+    "invoice_number": "INV005",
+    "po_number": "4500017",
+    "vendor_id": "V001",
+    "invoice_amount": "1000000",
+    "po_amount": "980000.0",
+    "status": "EXCEPTION",
+    "reasons": [
+      "Amount mismatch: invoice has 1000000, but PO has 980000.0."
+    ]
+  }
+]
