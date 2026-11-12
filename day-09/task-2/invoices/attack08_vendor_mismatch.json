@@ -1,0 +1,18 @@
+{
+  "invoiceNumber": "INV-ATTACK-008",
+  "poNumber": "4500012",
+  "vendorId": "V001",
+  "vendorName": "Wrong Vendor Ltd",
+  "invoiceDate": "2026-11-01",
+  "dueDate": "2026-11-20",
+  "gstin": "29ABCDE1234F1Z5",
+  "currency": "INR",
+  "totalAmount": "450000.00",
+  "items": [
+    {
+      "description": "Office supplies",
+      "quantity": 1,
+      "unitPrice": "450000.00"
+    }
+  ]
+}

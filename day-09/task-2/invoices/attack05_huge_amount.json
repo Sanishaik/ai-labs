@@ -1,0 +1,18 @@
+{
+  "invoiceNumber": "INV-ATTACK-005",
+  "poNumber": "4500017",
+  "vendorId": "V001",
+  "vendorName": "Vendor V001",
+  "invoiceDate": "2026-11-01",
+  "dueDate": "2026-11-20",
+  "gstin": "29ABCDE1234F1Z5",
+  "currency": "INR",
+  "totalAmount": "9999999999.00",
+  "items": [
+    {
+      "description": "Office equipment",
+      "quantity": 1,
+      "unitPrice": "9999999999.00"
+    }
+  ]
+}
