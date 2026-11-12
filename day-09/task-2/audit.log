@@ -1,10 +1,10 @@
-2026-11-12 11:04:45,804 Source=attack01_prompt_injection.json Invoice=INV-ATTACK-001 Status=EXCEPTION Reasons=Prompt injection detected. Posted=False
-2026-11-12 11:04:45,805 Source=attack02_amount_mismatch.json Invoice=INV-ATTACK-002 Status=EXCEPTION Reasons=Invoice amount does not match PO. Posted=False
-2026-11-12 11:04:45,805 Source=attack03_invalid_po.json Invoice=INV-ATTACK-003 Status=EXCEPTION Reasons=Purchase order not found. Posted=False
-2026-11-12 11:04:45,805 Source=attack04_duplicate_invoice.json Invoice=INV-ATTACK-001 Status=EXCEPTION Reasons=Duplicate invoice number detected. Posted=False
-2026-11-12 11:04:45,805 Source=attack05_huge_amount.json Invoice=INV-ATTACK-005 Status=EXCEPTION Reasons=Invoice amount does not match PO.; Invoice amount exceeds safety limit. Posted=False
-2026-11-12 11:04:45,806 Source=attack06_invalid_dates.json Invoice=INV-ATTACK-006 Status=EXCEPTION Reasons=Due date is before invoice date. Posted=False
-2026-11-12 11:04:45,806 Source=attack07_invalid_gstin.json Invoice=INV-ATTACK-007 Status=EXCEPTION Reasons=GSTIN must contain exactly 15 characters. Posted=False
-2026-11-12 11:04:45,806 Source=attack08_vendor_mismatch.json Invoice=INV-ATTACK-008 Status=EXCEPTION Reasons=Vendor name mismatch. Posted=False
-2026-11-12 11:04:45,806 Source=attack09_empty_invoice.json Invoice=UNKNOWN Status=EXCEPTION Reasons=Invalid or empty invoice JSON.; Missing required field: invoiceNumber; Missing required field: poNumber; Missing required field: vendorId; Missing required field: vendorName; Missing required field: invoiceDate; Missing required field: dueDate; Missing required field: gstin; Missing required field: currency; Missing required field: totalAmount; GSTIN must contain exactly 15 characters.; Invalid invoice or due date.; Purchase order not found.; Invalid or missing invoice line items. Posted=False
-2026-11-12 11:04:45,806 Source=attack10_line_item_mismatch.json Invoice=INV-ATTACK-010 Status=EXCEPTION Reasons=Line-item total mismatch. Posted=False
+2026-11-12 11:28:20,741 Source=attack01_prompt_injection Invoice=INV-ATTACK-001 Status=EXCEPTION Reasons=Prompt injection detected. Posted=False
+2026-11-12 11:28:20,741 Source=attack02_amount_mismatch Invoice=INV-ATTACK-002 Status=EXCEPTION Reasons=Invoice amount does not match PO. Posted=False
+2026-11-12 11:28:20,742 Source=attack03_invalid_po Invoice=INV-ATTACK-003 Status=EXCEPTION Reasons=Purchase order not found. Posted=False
+2026-11-12 11:28:20,742 Source=attack04_duplicate_invoice Invoice=INV-ATTACK-001 Status=EXCEPTION Reasons=Duplicate invoice number detected. Posted=False
+2026-11-12 11:28:20,742 Source=attack05_huge_amount Invoice=INV-ATTACK-005 Status=EXCEPTION Reasons=Invoice amount does not match PO.; Invoice amount exceeds safety limit. Posted=False
+2026-11-12 11:28:20,742 Source=attack06_invalid_dates Invoice=INV-ATTACK-006 Status=EXCEPTION Reasons=Due date is before invoice date. Posted=False
+2026-11-12 11:28:20,742 Source=attack07_invalid_gstin Invoice=INV-ATTACK-007 Status=EXCEPTION Reasons=GSTIN must contain exactly 15 characters. Posted=False
+2026-11-12 11:28:20,743 Source=attack08_vendor_mismatch Invoice=INV-ATTACK-008 Status=EXCEPTION Reasons=Vendor name mismatch. Posted=False
+2026-11-12 11:28:20,743 Source=attack09_empty_invoice Invoice=UNKNOWN Status=EXCEPTION Reasons=Invalid or empty invoice JSON.; Missing required field: invoiceNumber; Missing required field: poNumber; Missing required field: vendorId; Missing required field: vendorName; Missing required field: invoiceDate; Missing required field: dueDate; Missing required field: gstin; Missing required field: currency; Missing required field: totalAmount; GSTIN must contain exactly 15 characters.; Invalid invoice or due date.; Purchase order not found.; Invalid or missing invoice line items. Posted=False
+2026-11-12 11:28:20,743 Source=attack10_line_item_mismatch Invoice=INV-ATTACK-010 Status=EXCEPTION Reasons=Line-item total mismatch. Posted=False
