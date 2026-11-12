@@ -1,0 +1,12 @@
+[
+  {
+    "timestamp": "2026-11-12T13:39:47.571569+00:00",
+    "invoice_number": "INV001",
+    "po_number": "4500012",
+    "validation_status": "CLEAN",
+    "approver": "Demo Manager",
+    "decision": "APPROVED",
+    "comments": "Reviewed and approved for demo.",
+    "posted": false
+  }
+]

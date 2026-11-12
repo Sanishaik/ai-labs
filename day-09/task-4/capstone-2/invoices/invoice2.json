@@ -1,0 +1,8 @@
+{
+  "invoiceNumber": "INV002",
+  "poNumber": "4500014",
+  "vendorName": "Vendor V003",
+  "amount": 175000,
+  "currency": "INR",
+  "invoiceDate": "2026-11-02"
+}

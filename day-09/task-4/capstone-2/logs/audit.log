@@ -1,0 +1,9 @@
+2026-11-11T10:26:20.846533+00:00 | INV001 | CLEAN | 4500012
+2026-11-11T10:26:20.846548+00:00 | INV002 | CLEAN | 4500014
+2026-11-11T10:26:20.846554+00:00 | INV003 | CLEAN | 4500013
+2026-11-11T10:26:20.846558+00:00 | INV004 | EXCEPTION | 4500015
+2026-11-11T10:26:20.846561+00:00 | INV005 | EXCEPTION | 4500017
+TOTAL | 5 invoices | 3 CLEAN | 2 EXCEPTION
+2026-11-12T13:39:47.571569+00:00 | INV001 | APPROVED | 4500012 | approver=Demo Manager | comments=Reviewed and approved for demo. | posted=False
+2026-11-12T13:42:56.483848+00:00 | INV004 | BLOCKED | approver=Demo Manager | reason=Vendor mismatch: invoice has V001, but PO has V002. | posted=False
+2026-11-12T13:49:08.964386+00:00 | INV004 | BLOCKED | approver=Demo Manager | reason=Vendor mismatch: invoice has V001, but PO has V002. | posted=False
