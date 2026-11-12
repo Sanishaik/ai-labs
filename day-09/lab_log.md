@@ -1,40 +1,108 @@
 # Day 9 – Lab Log
 
-## Task 5: Proof & Log
+## 1. Objective
 
-### Work Completed
+The objective of Day 9 was to improve the security, reliability, and safety of an AI-powered invoice-processing agent.
 
-On Day 9, I completed Capstone 2, an Invoice Validation and Approval Workflow using the Model Context Protocol (MCP).
+The work covered security gap analysis, adversarial testing, agent evaluation, and completion of the invoice validation and approval workflow.
 
-I tested five sample invoices. Three invoices passed validation successfully, while two were identified as exceptions due to vendor and amount mismatches.
+## 2. Work Completed
 
-I implemented a human approval gate to ensure that only CLEAN invoices could be approved or rejected. Invoices with validation errors were blocked. I also implemented audit logging to record approval decisions and blocked attempts.
+### Task 1 – Security Gap Analysis
 
-I verified the approval records and audit log, updated the project README, and committed the project to Git.
+Reviewed the invoice-processing workflow and documented potential security and validation gaps.
 
-### What Would Stop Me from Putting This into Production?
+The review considered incorrect invoice details, purchase order mismatches, duplicate submissions, invalid inputs, and approval controls.
 
-I would not deploy this project directly into production because:
+**Deliverable:** `gaps.md`
 
-1. Authentication is needed to verify the approver's identity.
-2. Role-based access control is not implemented.
-3. Audit logs need secure storage and protection against unauthorized changes.
-4. Duplicate approval handling needs improvement.
-5. Real financial posting requires additional safeguards and testing.
-6. More security and integration tests are necessary.
-7. Production monitoring, alerting, and backups must be established.
+### Task 2 – Adversarial Testing
 
-### Final Summary
+Created and executed 10 attack tests to check whether the invoice agent could safely handle incorrect or malicious inputs.
 
-Through this task, I learned how to build an invoice validation workflow using MCP, handle exceptions, implement human approval, and maintain an audit trail. I also understood the importance of security and testing before deploying an AI-assisted workflow.
+The tests covered prompt injection, amount mismatches, nonexistent purchase orders, duplicate invoices, unusually large amounts, invalid dates, invalid GSTIN, vendor mismatches, empty files, and line-item total mismatches.
 
-This project is a learning prototype and is not intended for real financial transactions.
+**Result:** 10 out of 10 tests passed.
 
-### Proof of Completion
+Invalid invoices were expected to be identified as exceptions with reasons, not posted, and recorded in the audit log.
 
-- Project: Day 9 – Task 4 – Capstone 2
-- Project folder: day-09/task-4/capstone-2/
-- Git commit: 80030f2
-- Validation: 3 CLEAN and 2 EXCEPTION invoices
-- Approval gate and audit log: Tested successfully
-- GitHub push: Not yet confirmed
+**Deliverable:** `tests/test_attacks.py`
+
+### Task 3 – Agent Evaluation
+
+Documented the agent evaluation based on its validation behaviour, security tests, exception handling, and safe processing requirements.
+
+The evaluation helps identify areas for improvement before production deployment.
+
+**Deliverable:** `eval.md`
+
+### Task 4 – Capstone 2: Invoice Validation and Approval Agent
+
+Completed the invoice validation and approval workflow using MCP.
+
+Implemented invoice validation, purchase order checks, an approval gate, and audit logging.
+
+Five sample invoices were tested:
+
+- 3 invoices identified as CLEAN.
+- 2 invoices identified as EXCEPTION.
+- INV004 approval attempt was blocked because of a vendor mismatch.
+- A previous successful approval of INV001 was recorded.
+- Approval records and audit logs were verified.
+- No real financial posting was performed; records show `posted: false`.
+
+**Project folder:** `day-09/task-4/capstone-2/`
+
+## 3. Testing Summary
+
+| Test Area | Result |
+|---|---|
+| Adversarial attack tests | 10/10 passed |
+| Invoice validation | 3 CLEAN, 2 EXCEPTION |
+| Approval gate | Tested |
+| Vendor mismatch handling | Blocked correctly |
+| Approval records | Verified |
+| Audit log | Verified |
+| Financial posting | Not performed |
+
+## 4. Production Readiness Gaps
+
+The project is a learning prototype. Before production deployment, the following improvements are required:
+
+1. Authentication to verify approver identity.
+2. Role-based access control for approval permissions.
+3. Secure audit-log storage and tamper protection.
+4. Duplicate approval prevention.
+5. Safe financial-system integration.
+6. More security and integration testing.
+7. Monitoring, alerts, and backups.
+
+## 5. Learning Outcomes
+
+Through Day 9, I learned:
+
+- How to identify security gaps in an AI agent.
+- How to test an agent using adversarial inputs.
+- How to evaluate validation and exception-handling behaviour.
+- How MCP tools support invoice-processing workflows.
+- How to implement an approval gate.
+- How to maintain approval records and audit logs.
+- Why authentication, authorization, and monitoring are important for production systems.
+
+## 6. Proof of Completion
+
+- Repository: `Sanishaik/ai-labs`
+- Main branch: `main`
+- Day 9 folder: `day-09/`
+- Capstone 2 folder: `day-09/task-4/capstone-2/`
+- Capstone 2 commit: `80030f2`
+- Lab log commit: `1618a5f`
+- GitHub push: Successfully completed.
+
+## 7. Final Status
+
+Day 9 project files and lab documentation have been pushed to GitHub.
+
+The Capstone 2 video recording and two demo rehearsals remain to be completed and saved in OneDrive.
+
+**Final note:** This project demonstrates a learning prototype. It does not perform real financial posting or payment.
